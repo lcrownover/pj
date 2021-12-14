@@ -19,6 +19,11 @@ pj should have no output unless wanted or verbose logging
 pj should respect all environment variables
 pj should respect all aliases
 
+## Implementation
+
+user commands get put into tmp .sh files with #! and get executed by exec.Command.
+this preserves environment vars
+
 ## config
 
 `# ~/.config/pj/projects.yaml`
@@ -29,16 +34,18 @@ projects:
     # I want to open the 'pj' project
     # that lives in 'dir'
     # and run the command
-    pj:
-        dir: "$HOME/repos/pj"
-        command: "code ."
-    secondproject:
-        dir: "$HOME/repos/secondproject"
-        navigate: true
-        pre_commands:
-        - "echo $TMUX"
-        - "test -f .tmux"
-        command: "vv"
-        post_commands:
-        - "rm -f tmp/*"
+
+- name: "pj"
+  directory: "$HOME/repos/pj"
+  command: "code ."
+
+- name: "secondproject"
+  directory: "$HOME/repos/secondproject"
+  navigate: true
+  pre_commands:
+  - "echo $TMUX"
+  - "test -f .tmux"
+  command: "vv"
+  post_commands:
+  - "rm -f tmp/*"
 ```
