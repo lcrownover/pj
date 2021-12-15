@@ -15,8 +15,11 @@ pj projectname
 ## Details
 
 pj should disown all subprocesses
+
 pj should have no output unless wanted or verbose logging
+
 pj should respect all environment variables
+
 pj should respect all aliases
 
 ## Implementation
