@@ -39,9 +39,14 @@ projects:
   directory: "$HOME/repos/pj"
   command: "code ."
 
+- name: "uotdx"
+  env:
+  - TEST_USERNAME: "some_username"
+  - TEST_PASSWORD: "secret1"
+  command: "code $HOME/repos/uotdx"
+
 - name: "secondproject"
   directory: "$HOME/repos/secondproject"
-  navigate: true
   pre_commands:
   - "echo $TMUX"
   - "test -f .tmux"

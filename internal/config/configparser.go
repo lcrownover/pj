@@ -10,12 +10,12 @@ import (
 )
 
 type ProjectConfig struct {
-	Name         string   `yaml:"name"`
-	Directory    string   `yaml:"directory"`
-	Command      string   `yaml:"command"`
-	Precommands  []string `yaml:"pre_commands"`
-	Postcommands []string `yaml:"post_commands"`
-	Navigate     bool     `yaml:"navigate"`
+	Name         string              `yaml:"name"`
+	Directory    string              `yaml:"directory"`
+	Command      string              `yaml:"command"`
+	Precommands  []string            `yaml:"pre_commands"`
+	Postcommands []string            `yaml:"post_commands"`
+	Environment  []map[string]string `yaml:"env"`
 }
 
 type ProjectList struct {
@@ -43,4 +43,13 @@ func UnmarshallProjectList(path string) (ProjectList, error) {
 	}
 
 	return data, nil
+}
+
+func LoadConfig() ProjectList {
+	defaultPath := "/Users/lcrown/.config/pj/config.yaml"
+	pl, err := UnmarshallProjectList(defaultPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return pl
 }
