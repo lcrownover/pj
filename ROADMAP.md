@@ -31,9 +31,6 @@ this preserves environment vars
 ```yaml
 ---
 projects:
-    # I want to open the 'pj' project
-    # that lives in 'dir'
-    # and run the command
 
 - name: "pj"
   directory: "$HOME/repos/pj"
